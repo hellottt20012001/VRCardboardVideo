@@ -1,0 +1,30 @@
+package com.mtk.vrtvsample.data;
+
+import android.opengl.GLES20;
+
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
+
+/**
+ * Created by quanhua on 05/01/2016.
+ */
+public class VertexArray {
+    private final FloatBuffer floatBuffer;
+    public static int BYTES_PER_FLOAT = 4;
+
+    public VertexArray(float[] vertexData){
+        floatBuffer =ByteBuffer.allocateDirect(vertexData.length * BYTES_PER_FLOAT)
+                .order(ByteOrder.nativeOrder())
+                .asFloatBuffer()
+                .put(vertexData);
+    }
+
+    public void setVertexAttribPointer( int dataOffset, int attributeLocation, int componentCount, int stride){
+        floatBuffer.position(dataOffset);
+        GLES20.glVertexAttribPointer(attributeLocation, componentCount, GLES20.GL_FLOAT, false, stride, floatBuffer);
+        GLES20.glEnableVertexAttribArray(attributeLocation);
+
+        floatBuffer.position(0);
+    }
+}

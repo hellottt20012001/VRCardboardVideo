@@ -99,7 +99,7 @@ public class TreasureHuntActivity extends GvrActivity implements GvrView.StereoR
     videoRenderer  = new DefaultVideoRenderer(this);
     glMediaPlayer = new GLMediaPlayer(this, videoRenderer, true);
     try{
-           glMediaPlayer.setDataSource("http://webhd3.ttu.edu.tw:8000/download/%E9%99%B3%E7%B6%BA%E8%B2%9E%20Cheer%20Chen%E3%80%90%E9%82%84%E6%98%AF%E6%9C%83%E5%AF%82%E5%AF%9E%20Lonely%20without%20you%E3%80%91Official%20Music%20Video.mp4?para=wSQmovdTEwMjAyMTA2L7OvuvatcyBDaGVlciBDaGVuoWnB2axPt3yxSbnmIExvbmVseSB3aXRob3V0IHlvdaFqT2ZmaWNpYWwgTXVzaWMgVmlkZW8ubXA0Z1F3U0JqVnhPdExQ");
+           glMediaPlayer.setDataSource("http://patpet.liondev.tw/a.mp4");
 
     }catch (Exception e){
       e.printStackTrace();
@@ -162,7 +162,9 @@ public class TreasureHuntActivity extends GvrActivity implements GvrView.StereoR
 
 
     Matrix.setIdentityM(modelVideo, 0);
+    //Matrix.setRotateEulerM(modelVideo, 0, 0, 0, 90);
     Matrix.translateM(modelVideo, 0, 0, 0, 0);
+
     videoRenderer.onSurfaceCreated(config);
 
     checkGLError("onSurfaceCreated");
